@@ -11,10 +11,9 @@ book:
   favicon: uff-brasao.jpg
   page-footer:
     left: |
-      Criação: Maqueise Pinheiro e Thaís Machado. <br>
       Orientação: Douglas Rodrigues (UFF) e Karina Yaginuma (UFF). <br>
-      Colaboradores: Gabriel Miranda, Thiago Augusto, Luana Moreno e Guilherme Ceacero.
-  repo-url: https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io
+      Equipe atual: Gabriel Caetano, Guilherme Ceacero, Claudionor Ferreira e Fenício Porto.
+  repo-url: https://github.com/CienciaDeDadosUFF/R.github.io
   downloads: [pdf]
   
   chapters:
