@@ -37,6 +37,7 @@ bibliography: references.bib
 
 format:
   html:
+    extensions: [callouts]
     theme:
       light: flatly
       dark: darkly

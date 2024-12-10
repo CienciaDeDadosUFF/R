@@ -1,12 +1,14 @@
 # Avaliando Preditores - Introdução ao Pacote Caret
 
-O pacote caret (abreviação de *Classification And Regression Training*) é um pacote muito útil para o *machine learning* pois envolve algoritmos que possibilitam que as previsões sejam feitas de forma mais prática, simplificando o processo de criação de modelos preditivos. Neste [guia detalhado](http://topepo.github.io/caret/index.html) pode ser encontrado mais informações sobre o pacote.
+O pacote caret (abreviação de *Classification And Regression Training*) é um pacote muito útil para apricar os métodos de *aprendizado de máquinas* pois envolve algoritmos que possibilitam que as previsões sejam feitas de forma mais prática, simplificando o processo de criação de modelos preditivos. Neste [guia detalhado](http://topepo.github.io/caret/index.html) pode ser encontrado mais informações sobre o pacote.
 
 ## **Avaliando Classificadores**
 
 Vamos utilizar a base de dados spam novamente para realizarmos o procedimento de predição para um e-mail (se ele é spam ou não spam), dessa vez utilizando o pacote caret.
 
-Para fazer a separação da amostra em treino e teste vamos primeiramente particionar a base de dados com a função createDataPartition().
+Para fazer a separação da amostra em treino e teste, vamos particionar a base de dados com a função createDataPartition(). Em problemas de classificação, a função createDataPartition() garante que a mesma proporção de cada classe observada no banco de dados seja mantida nas amostras de treino e teste. Ou seja, se o banco de dados tiver 70% de elementos do tipo A e 30% do tipo B, as amostras treino e teste terão cada uma 70% de elementos do tipo A e 30% do tipo B.
+
+Para problemas de regressão, createDataPartition() cria uma partição estratificada com base na variável dependente contínua, dividindo os dados de forma a representar bem a distribuição dos valores da variável de resposta em ambas as amostras de treino e teste.   
 
 ```{r}
 library(caret)
@@ -18,15 +20,15 @@ noTreino = createDataPartition(y = spam$type, p = 0.75, list = F)
 
 Essa função retorna os números das linhas a serem selecionadas para o treino. Os principais argumentos são:
 
--   **y** = classe dos dados que deverá ser mantida a mesma proporção nos conjuntos treino e teste. Para o nosso exemplo, escolhemos manter a mesma proporção do tipo do e-mail. Sendo assim, tanto no treino como no teste teremos a mesma proporção de e-mails spam e não spam.
+-   **y** = é a variável resposta; será mantida a mesma proporção de cada classe nos conjuntos treino e teste. Para o nosso exemplo, será a variável type. Sendo assim, tanto no treino como no teste teremos a mesma proporção de e-mails spam e não spam.
 
--   **p** = porcentagem da amostra que será utilizada para o treino. Para o nosso exemplo, escolhemos 75%.
+-   **p** = porcentagem da amostra que será utilizada para o treino. Para o nosso exemplo, escolhemos 75%, mas a decisão final é do pesquisador.
 
 -   **list** = argumento do tipo *logical*, se TRUE → os resultados serão mostrados em uma lista, se FALSE → os resultados serão mostrados em uma matriz.
 
 > **OBS:** Esse comando deve ser utilizado apenas quando os dados são amostras independentes.
 
-Agora vamos separar o que irá para o treino e o que irá para o teste.
+Agora vamos separar as amostras que irão para o conjunto de treino e as que irão para o conjunto de teste.
 
 ```{r}
 # Separando as linhas para o treino:
@@ -35,13 +37,13 @@ treino = spam[noTreino,]
 teste = spam[-noTreino,]
 ```
 
-Dado que já foi feito a separação das amostras treino e teste, o próximo passo é realizarmos o treinamento. Para isso é preciso escolher um dos modelos para ser utilizado. Uma lista com todos os modelos implementados no pacote caret pode ser vista com o seguinte comando:
+Após feita a separação das amostras treino e teste, podemos realizar o treinamento do modelo. Para isso é preciso escolher um dos modelos para ser utilizado. Uma lista com todos os modelos implementados no pacote caret pode ser vista com o seguinte comando:
 
 ```{r}
 names(getModelInfo())
 ```
 
-Para o nosso exemplo vamos utilizar o "glm" (*generalized linear model*).
+Para o nosso exemplo, vamos utilizar regressão logística, que possui no caret a alcunha "glm" (*generalized linear model*).
 
 Agora vamos criar o nosso modelo, utilizando apenas a amostra **treino**. Para isso vamos usar o comando train().
 
@@ -50,15 +52,24 @@ modelo = train(type ~ ., data = treino, method = "glm")
 
 ```
 
-No primeiro argumento colocamos qual variável estamos tentando prever em função de qual(is). No nosso caso, queremos prever "type" em função ("\~") de todas as outras, por isso utilizamos o ".". Em seguida dizemos de qual base de dados queremos construir o modelo e por último o método de treinamento utilizado.
+No primeiro argumento colocamos qual variável estamos tentando prever em função de qual(is). No nosso caso, queremos prever "type" em função ("\~") de todas as outras, por isso utilizamos o ponto ".". Em seguida dizemos de qual base de dados queremos construir o modelo e por último o método de treinamento utilizado.
 
-Agora vamos dar uma olhada no nosso modelo.
+:::{.callout-tip}
+Caso deseje utilizar apenas algumas das variáveis explicativas, basta detalhar quais variáveis devem ser consideradas no modelo, como o exemplo abaixo:
+```{r}
+modelo2 = train(type ~ your+money+capitalAve, data = treino, method = "glm")
+
+```
+:::
+
+
+Agora vamos dar uma olhada como ficou nosso modelo.
 
 ```{r}
 modelo
 ```
 
-Podemos observar que utilizamos uma amostra de tamanho 3451 no treino e 57 preditores para prever a qual classe um e-mail pertence, spam ou não spam. O que a função faz é realizar várias maneiras diferentes de testar se esse modelo funcionará bem e usar isso para selecionar o melhor modelo. Neste caso ela usou a reamostragem por bootstrapping com 25 replicações (o default da função).
+Podemos observar que utilizamos uma amostra de tamanho 3451 no treino e 57 variáveis para prever a qual classe um e-mail pertence, spam ou não spam. O que a função faz é ajustar o modelo selecionado (glm no nosso caso) nos dados de treino, buscando otimizar uma métrica pré determinada (o padrão para classificação é acurácia). Quando o modelo necessita de ajuste de hiperparâmetros, a função utiliza métodos de reamostragem para selecionar o melhor modelo. O padrão é reamostragem por bootstrapping com 25 replicações. Trataremos deste tema posteriormente.
 
 Uma vez que ajustamos o modelo podemos aplicá-lo na amostra **teste**, para estimarmos a precisão do classificador. Para isso utilizamos o comando predict(). Dentro da função nós passamos o modelo que ajustamos no treino e em qual base de dados gostaríamos de realizar a predição.
 
