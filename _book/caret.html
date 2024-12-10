@@ -164,7 +164,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">APRENDIZADO DE MÁQUINA COM R</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CienciaDeDadosUFF/R.github.io" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="./APRENDIZADO-DE-MÁQUINA-COM-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
@@ -302,7 +302,7 @@ window.Quarto = {
   <li><a href="#mse" id="toc-mse" class="nav-link" data-scroll-target="#mse"><span class="header-section-number">6.2.1</span> <strong>MSE</strong></a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CienciaDeDadosUFF/R.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -332,26 +332,11 @@ window.Quarto = {
 <p>Vamos utilizar a base de dados spam novamente para realizarmos o procedimento de predição para um e-mail (se ele é spam ou não spam), dessa vez utilizando o pacote caret.</p>
 <p>Para fazer a separação da amostra em treino e teste vamos primeiramente particionar a base de dados com a função createDataPartition().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Carregando pacotes exigidos: ggplot2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Carregando pacotes exigidos: lattice</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kernlab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Anexando pacote: 'kernlab'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>O seguinte objeto é mascarado por 'package:ggplot2':
-
-    alpha</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(spam)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">371</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>noTreino <span class="ot">=</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">p =</span> <span class="fl">0.75</span>, <span class="at">list =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kernlab)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(spam)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">371</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>noTreino <span class="ot">=</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">p =</span> <span class="fl">0.75</span>, <span class="at">list =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Essa função retorna os números das linhas a serem selecionadas para o treino. Os principais argumentos são:</p>
 <ul>
@@ -364,14 +349,14 @@ Anexando pacote: 'kernlab'</code></pre>
 </blockquote>
 <p>Agora vamos separar o que irá para o treino e o que irá para o teste.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separando as linhas para o treino:</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">=</span> spam[noTreino,]</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Separando as linhas para o teste:</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">=</span> spam[<span class="sc">-</span>noTreino,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separando as linhas para o treino:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">=</span> spam[noTreino,]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Separando as linhas para o teste:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">=</span> spam[<span class="sc">-</span>noTreino,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Dado que já foi feito a separação das amostras treino e teste, o próximo passo é realizarmos o treinamento. Para isso é preciso escolher um dos modelos para ser utilizado. Uma lista com todos os modelos implementados no pacote caret pode ser vista com o seguinte comando:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">getModelInfo</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">getModelInfo</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] "ada"                 "AdaBag"              "AdaBoost.M1"        
   [4] "adaboost"            "amdai"               "ANFIS"              
@@ -458,40 +443,12 @@ Anexando pacote: 'kernlab'</code></pre>
 <p>Para o nosso exemplo vamos utilizar o “glm” (<em>generalized linear model</em>).</p>
 <p>Agora vamos criar o nosso modelo, utilizando apenas a amostra <strong>treino</strong>. Para isso vamos usar o comando train().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> <span class="fu">train</span>(type <span class="sc">~</span> ., <span class="at">data =</span> treino, <span class="at">method =</span> <span class="st">"glm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> <span class="fu">train</span>(type <span class="sc">~</span> ., <span class="at">data =</span> treino, <span class="at">method =</span> <span class="st">"glm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>No primeiro argumento colocamos qual variável estamos tentando prever em função de qual(is). No nosso caso, queremos prever “type” em função (“~”) de todas as outras, por isso utilizamos o “.”. Em seguida dizemos de qual base de dados queremos construir o modelo e por último o método de treinamento utilizado.</p>
 <p>Agora vamos dar uma olhada no nosso modelo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>modelo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>modelo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Generalized Linear Model 
 
@@ -511,8 +468,8 @@ Resampling results:
 <p>Podemos observar que utilizamos uma amostra de tamanho 3451 no treino e 57 preditores para prever a qual classe um e-mail pertence, spam ou não spam. O que a função faz é realizar várias maneiras diferentes de testar se esse modelo funcionará bem e usar isso para selecionar o melhor modelo. Neste caso ela usou a reamostragem por bootstrapping com 25 replicações (o default da função).</p>
 <p>Uma vez que ajustamos o modelo podemos aplicá-lo na amostra <strong>teste</strong>, para estimarmos a precisão do classificador. Para isso utilizamos o comando predict(). Dentro da função nós passamos o modelo que ajustamos no treino e em qual base de dados gostaríamos de realizar a predição.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>predicao <span class="ot">=</span> <span class="fu">predict</span>(modelo, <span class="at">newdata =</span> teste)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predicao, <span class="at">n=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>predicao <span class="ot">=</span> <span class="fu">predict</span>(modelo, <span class="at">newdata =</span> teste)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predicao, <span class="at">n=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] spam    spam    spam    spam    spam    spam    spam    nonspam nonspam
 [10] spam    spam    spam    nonspam nonspam spam    spam    spam    spam   
@@ -532,7 +489,7 @@ Levels: nonspam spam</code></pre>
 <p><img src="https://cienciadedadosuff.github.io/assets/r/courses/machine_learning/01/images/Matriz%20de%20Confusao%20Preenchida.png" class="img-fluid"></p>
 <p>Dentro da função passamos as predições que obtemos pelo modelo ajustado e as reais classificações dos e-mails do conjunto teste.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(predicao, teste<span class="sc">$</span>type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(predicao, teste<span class="sc">$</span>type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
@@ -579,8 +536,8 @@ Prediction nonspam spam
 <h2 data-number="6.2" class="anchored" data-anchor-id="avaliando-regressores"><span class="header-section-number">6.2</span> <strong>Avaliando Regressores</strong></h2>
 <p>Agora vamos utilizar a base de dados <code>faithful</code> para tentar prever o tempo de espera (<em>waiting</em>) entre uma erupção e outra de um gêiser dado a duração das erupções (<em>eruption</em>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"faithful"</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithful)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"faithful"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithful)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  eruptions waiting
 1     3.600      79
@@ -593,9 +550,9 @@ Prediction nonspam spam
 </div>
 <p>Primeiro, vamos separar a amostra em treino e teste.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">39</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>noTreino <span class="ot">=</span> <span class="fu">createDataPartition</span>(<span class="at">y=</span>faithful<span class="sc">$</span>waiting, <span class="at">p=</span><span class="fl">0.7</span>, <span class="at">groups =</span> <span class="dv">5</span>, <span class="at">list=</span>F)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">=</span> faithful[noTreino,]; teste <span class="ot">=</span> faithful[<span class="sc">-</span>noTreino,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">39</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>noTreino <span class="ot">=</span> <span class="fu">createDataPartition</span>(<span class="at">y=</span>faithful<span class="sc">$</span>waiting, <span class="at">p=</span><span class="fl">0.7</span>, <span class="at">groups =</span> <span class="dv">5</span>, <span class="at">list=</span>F)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">=</span> faithful[noTreino,]; teste <span class="ot">=</span> faithful[<span class="sc">-</span>noTreino,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Quando o argumento <code>y</code> é numérico, a amostra é dividida em grupos com base nos percentis e é feita uma amostragem estratificada. O número de percentis é definido pelo argumento <code>groups</code>.</p>
 <p>Agora temos que treinar nosso modelo. Para esse exemplo vamos usar a Regressão Linear (<em>LM - Linear Regression</em>).</p>
@@ -604,11 +561,11 @@ Prediction nonspam spam
 </blockquote>
 <p>Vamos treinar nosso modelo utilizando a amostra <strong>treino</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">train</span>(waiting<span class="sc">~</span>eruptions, <span class="at">data =</span> treino, <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">train</span>(waiting<span class="sc">~</span>eruptions, <span class="at">data =</span> treino, <span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Novamente, colocamos a variável que tentamos prever em função das outras. No caso, só temos duas variáveis então não precisamos colocar o ponto como no [classificador].</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>modelo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>modelo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear Regression 
 
@@ -629,7 +586,7 @@ Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 <p>Podemos ver que temos 192 observações no conjunto treino e 1 preditor.</p>
 <p>Agora vamos aplicar nosso modelo na amostra teste para avaliar o erro dele.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>predicao <span class="ot">=</span> <span class="fu">predict</span>(modelo, <span class="at">newdata =</span> teste)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>predicao <span class="ot">=</span> <span class="fu">predict</span>(modelo, <span class="at">newdata =</span> teste)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Assim como no classificador, a função <code>predict</code> nos retorna a previsão dos tempos entre as erupções dado os tempos das durações das erupções.</p>
 <section id="mse" class="level3" data-number="6.2.1">
@@ -642,8 +599,8 @@ MSE = \frac{1}{n}\sum_{i=1}^{n} \left( Yreal_i - Yestimado_i \right)^2
 <p><img src="https://cienciadedadosuff.github.io/assets/r/courses/machine_learning/01/images/MSE.jpg" class="img-fluid" alt="tela_0"></p>
 <p><strong>Ex.:</strong> O erro quadrático médio para o problema de tempo de erupção do gêiser.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"faithful"</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithful)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"faithful"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithful)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  eruptions waiting
 1     3.600      79
@@ -655,9 +612,9 @@ MSE = \frac{1}{n}\sum_{i=1}^{n} \left( Yreal_i - Yestimado_i \right)^2
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico do tempo entre as erupções em função do tempo de erupção do gêiseres</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(faithful<span class="sc">$</span>eruptions, faithful<span class="sc">$</span>waiting, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">ylab=</span><span class="st">"Tempo entre Erupções"</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo de Erupção"</span>, <span class="at">main =</span> <span class="st">"Tempo entre as erupções em função do tempo de erupção do gêiser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico do tempo entre as erupções em função do tempo de erupção do gêiseres</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(faithful<span class="sc">$</span>eruptions, faithful<span class="sc">$</span>waiting, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">ylab=</span><span class="st">"Tempo entre Erupções"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo de Erupção"</span>, <span class="at">main =</span> <span class="st">"Tempo entre as erupções em função do tempo de erupção do gêiser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -668,10 +625,10 @@ MSE = \frac{1}{n}\sum_{i=1}^{n} \left( Yreal_i - Yestimado_i \right)^2
 </div>
 <p>Podemos notar que há uma relação linear positiva entre as variáveis. Vamos então ajustar um modelo de regressão linear.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> <span class="fu">lm</span>(faithful<span class="sc">$</span>waiting<span class="sc">~</span>faithful<span class="sc">$</span>eruptions)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> faithful<span class="sc">$</span>waiting, <span class="at">x =</span> faithful<span class="sc">$</span>eruptions, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">ylab=</span><span class="st">"Tempo entre erupções"</span>,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo de erupção"</span>, <span class="at">main =</span> <span class="st">"Tempo entre as erupções em função do tempo de erupção do gêiser"</span>)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(modelo, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> <span class="fu">lm</span>(faithful<span class="sc">$</span>waiting<span class="sc">~</span>faithful<span class="sc">$</span>eruptions)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> faithful<span class="sc">$</span>waiting, <span class="at">x =</span> faithful<span class="sc">$</span>eruptions, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">ylab=</span><span class="st">"Tempo entre erupções"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tempo de erupção"</span>, <span class="at">main =</span> <span class="st">"Tempo entre as erupções em função do tempo de erupção do gêiser"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(modelo, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -682,8 +639,8 @@ MSE = \frac{1}{n}\sum_{i=1}^{n} \left( Yreal_i - Yestimado_i \right)^2
 </div>
 <p>Na reta de regressão temos todos os valores previstos para o tempo de erupção de acordo com os tempos de espera. Podemos então calcular o MSE para o nosso modelo utilizando o comando mse().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">=</span> <span class="fu">sum</span>((teste<span class="sc">$</span>waiting<span class="sc">-</span>predicao)<span class="sc">**</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">nrow</span>(teste)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>mse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">=</span> <span class="fu">sum</span>((teste<span class="sc">$</span>waiting<span class="sc">-</span>predicao)<span class="sc">**</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">nrow</span>(teste)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>mse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 32.41941</code></pre>
 </div>
@@ -1275,11 +1232,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Criação: Maqueise Pinheiro e Thaís Machado. <br> Orientação: Douglas Rodrigues (UFF) e Karina Yaginuma (UFF). <br> Colaboradores: Gabriel Miranda, Thiago Augusto, Luana Moreno e Guilherme Ceacero.</p>
+<p>Orientação: Douglas Rodrigues (UFF) e Karina Yaginuma (UFF). <br> Equipe atual: Gabriel Caetano, Guilherme Ceacero, Claudionor Ferreira e Fenício Porto.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CienciaDeDadosUFF/R.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

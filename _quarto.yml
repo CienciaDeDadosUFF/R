@@ -45,3 +45,7 @@ format:
 
 editor: visual
 
+knitr: 
+  opts_chunk: 
+    warning: false 
+    message: false

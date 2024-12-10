@@ -1,10 +1,10 @@
 # Erros Amostrais
 
-Este é um dos conceitos mais fundamentais com os quais lidamos na aprendizagem de máquina e previsão. Temos duas taxas de erros amostrais: o **erro dentro da amostra (*in sample error*)** e o **erro fora da amostra (*out of sample error*)**.
+Este é um dos conceitos mais fundamentais com os quais lidamos na aprendizagem de máquina e previsão. Temos dois tipos de erros amostrais: o **erro dentro da amostra (*in sample error*)** e o **erro fora da amostra (*out of sample error*)**.
 
 ## **Erro dentro da Amostra (*In Sample Error*)**
 
-É a taxa de erro que você recebe no mesmo conjunto de dados usado para criar seu preditor. Na literatura às vezes é chamado de erro de resubstituição. Em outras palavras, é quando seu algoritmo de previsão se ajusta ao que você coletou num conjunto de dados específico. E assim, quando você recebe um novo conjunto de dados, a precisão diminuirá.
+A taxa de erro dentro da amostra refere-se ao erro calculado no mesmo conjunto de dados utilizado para treinar o modelo preditivo. Na literatura, isso é frequentemente denominado como "erro de resubstituição". Em outras palavras, essa taxa de erro mede o quanto algoritmo de previsão se ajusta exatamente aos mesmos dados utilizados para o treinamento do modelo. No entanto, quando o modelo é aplicado a um novo conjunto de dados, é esperado que essa precisão diminua.
 
 ## **Erro fora da Amostra (*Out of Sample Error*)**
 
@@ -16,7 +16,7 @@ Este é um dos conceitos mais fundamentais com os quais lidamos na aprendizagem 
 
 2.  Erro dentro da amostra é menor que o erro fora da amostra.
 
-3.  Um erro frequente é ajustar muito o algoritmo aos dados que temos. Em outras palavras, criar um modelo *overfitting*(\*).
+3.  Um erro frequente é ajustar muito o algoritmo aos dados que temos. Em outras palavras, criar um modelo sobreajustado (também chamado de  *overfitting*(\*)).
 
     (\*) ***Overfitting*** é um termo usado na estatística para descrever quando um modelo estatístico se ajusta muito bem a um conjunto de dados anteriormente observado e, como consequência, se mostra ineficaz para prever novos resultados.
 

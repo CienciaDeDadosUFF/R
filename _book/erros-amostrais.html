@@ -135,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">APRENDIZADO DE MÁQUINA COM R</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CienciaDeDadosUFF/R.github.io" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="./APRENDIZADO-DE-MÁQUINA-COM-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#algumas-ideias-chave" id="toc-algumas-ideias-chave" class="nav-link" data-scroll-target="#algumas-ideias-chave"><span class="header-section-number">5.2.1</span> <strong>Algumas ideias-chave</strong></a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CienciaDeDadosUFF/R.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -294,10 +294,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Este é um dos conceitos mais fundamentais com os quais lidamos na aprendizagem de máquina e previsão. Temos duas taxas de erros amostrais: o <strong>erro dentro da amostra (<em>in sample error</em>)</strong> e o <strong>erro fora da amostra (<em>out of sample error</em>)</strong>.</p>
+<p>Este é um dos conceitos mais fundamentais com os quais lidamos na aprendizagem de máquina e previsão. Temos dois tipos de erros amostrais: o <strong>erro dentro da amostra (<em>in sample error</em>)</strong> e o <strong>erro fora da amostra (<em>out of sample error</em>)</strong>.</p>
 <section id="erro-dentro-da-amostra-in-sample-error" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="erro-dentro-da-amostra-in-sample-error"><span class="header-section-number">5.1</span> <strong>Erro dentro da Amostra (<em>In Sample Error</em>)</strong></h2>
-<p>É a taxa de erro que você recebe no mesmo conjunto de dados usado para criar seu preditor. Na literatura às vezes é chamado de erro de resubstituição. Em outras palavras, é quando seu algoritmo de previsão se ajusta ao que você coletou num conjunto de dados específico. E assim, quando você recebe um novo conjunto de dados, a precisão diminuirá.</p>
+<p>A taxa de erro dentro da amostra refere-se ao erro calculado no mesmo conjunto de dados utilizado para treinar o modelo preditivo. Na literatura, isso é frequentemente denominado como “erro de resubstituição”. Em outras palavras, essa taxa de erro mede o quanto algoritmo de previsão se ajusta exatamente aos mesmos dados utilizados para o treinamento do modelo. No entanto, quando o modelo é aplicado a um novo conjunto de dados, é esperado que essa precisão diminua.</p>
 </section>
 <section id="erro-fora-da-amostra-out-of-sample-error" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="erro-fora-da-amostra-out-of-sample-error"><span class="header-section-number">5.2</span> <strong>Erro fora da Amostra (<em>Out of Sample Error</em>)</strong></h2>
@@ -307,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>Quase sempre o erro fora da amostra é o que interessa.</p></li>
 <li><p>Erro dentro da amostra é menor que o erro fora da amostra.</p></li>
-<li><p>Um erro frequente é ajustar muito o algoritmo aos dados que temos. Em outras palavras, criar um modelo <em>overfitting</em>(*).</p>
+<li><p>Um erro frequente é ajustar muito o algoritmo aos dados que temos. Em outras palavras, criar um modelo sobreajustado (também chamado de <em>overfitting</em>(*)).</p>
 <p>(*) <strong><em>Overfitting</em></strong> é um termo usado na estatística para descrever quando um modelo estatístico se ajusta muito bem a um conjunto de dados anteriormente observado e, como consequência, se mostra ineficaz para prever novos resultados.</p></li>
 </ol>
 <p>Vejamos um exemplo de erro dentro da amostra <em>vs</em> erro fora da amostra:</p>
@@ -1041,11 +1041,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Criação: Maqueise Pinheiro e Thaís Machado. <br> Orientação: Douglas Rodrigues (UFF) e Karina Yaginuma (UFF). <br> Colaboradores: Gabriel Miranda, Thiago Augusto, Luana Moreno e Guilherme Ceacero.</p>
+<p>Orientação: Douglas Rodrigues (UFF) e Karina Yaginuma (UFF). <br> Equipe atual: Gabriel Caetano, Guilherme Ceacero, Claudionor Ferreira e Fenício Porto.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CienciaDeDadosUFF/R.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
