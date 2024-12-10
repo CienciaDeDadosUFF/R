@@ -54,7 +54,7 @@ bwplot(resultados, scales=escala)
 
 ![](https://cienciadedadosuff.github.io/assets/r/courses/machine_learning/01/images/unnamed-chunk-41-1.png)
 
-Pelos boxplots podemos perceber que o modelo linear é o que possui a pior mediana nas três medidas comparativas e parece ter os dados mais espalhados, principalmente no �2, o que indica que ele possui alta variabilidade. Quanto ao KNN e o PPR, os dados estão mais concentrados no RMSE e no �2, embora tenham bastante *outliers*. Parece que o PPR é levemente melhor que o KNN, mas é preciso uma análise mais profunda.
+Os boxplots revelam que o modelo linear apresenta a uma mediana ruim nas três métricas comparativas, com os dados mais dispersos, especialmente no $R^2$, indicando alta variabilidade. Em contrapartida, tanto o KNN quanto o PPR mostram uma concentração maior dos dados no RMSE e no $R^2$. A análise sugere que o NN oferece um desempenho ligeiramente superior ao PPR, mas uma investigação mais detalhada é necessária para confirmar essa diferença.
 
 ```{r}
 library(lattice)
@@ -70,7 +70,7 @@ resultados = resamples(list(LM=modelo_lm, PPR=modelo_ppr, KNN=modelo_knn))
 summary(resultados)
 ```
 
-Podemos notar que o KNN tem uma posição melhor que o PPR em todas as medidas. Como saber se essa diferença é significativa? Vamos calcular as diferenças entre os dois modelos e avaliar atravé do p-valor.
+Podemos notar que o KNN tem uma posição melhor que o PPR em todas as medidas. Como saber se essa diferença é significativa? Vamos calcular as diferenças entre os dois modelos e avaliar através do p-valor.
 
 ```{r}
 #Calcular diferença entre modelos, e realizar
