@@ -342,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(folds,length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Fold01 Fold02 Fold03 Fold04 Fold05 Fold06 Fold07 Fold08 Fold09 Fold10 
-  4141   4141   4141   4141   4141   4140   4142   4141   4140   4141 </code></pre>
+  4141   4141   4140   4142   4141   4141   4141   4141   4141   4140 </code></pre>
 </div>
 </div>
 <p>Agora vamos fazer o mesmo para a amostra teste:</p>
@@ -351,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(folds,length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Fold01 Fold02 Fold03 Fold04 Fold05 Fold06 Fold07 Fold08 Fold09 Fold10 
-   460    460    459    461    460    461    461    460    460    459 </code></pre>
+   460    460    461    461    461    459    460    460    459    460 </code></pre>
 </div>
 </div>
 <p>Outra opção de realizar a reamostragem por k-fold é aplicá-la diretamente na função train.</p>
