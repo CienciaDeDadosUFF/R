@@ -73,11 +73,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -135,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">APRENDIZADO DE MÁQUINA COM R</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CienciaDeDadosUFF/R.github.io" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="./APRENDIZADO-DE-MÁQUINA-COM-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
@@ -271,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#bootstrap" id="toc-bootstrap" class="nav-link" data-scroll-target="#bootstrap"><span class="header-section-number">7.1.3</span> Bootstrap</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CienciaDeDadosUFF/R.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -321,29 +321,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>OBS</strong>: Quando o k é igual ao tamanho da amostra, o método é também conhecido como <strong><em>leave-one-out</em></strong>.</p>
 <p><strong>Ex.:</strong> vamos utilizar reamostragem por k-fold no conjunto de dados spam.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Carregando pacotes exigidos: ggplot2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Carregando pacotes exigidos: lattice</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kernlab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Anexando pacote: 'kernlab'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>O seguinte objeto é mascarado por 'package:ggplot2':
-
-    alpha</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(spam)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>noTreino <span class="ot">=</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">p =</span> <span class="fl">0.75</span>, <span class="at">list =</span> F)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">=</span> spam[noTreino,]</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">=</span> spam[<span class="sc">-</span>noTreino,]</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Para fazer a reamostragem por k-fold vamos utilizar o comando createFolds():</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">=</span> <span class="fu">createFolds</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">k =</span> <span class="dv">10</span>, <span class="at">list =</span> T, <span class="at">returnTrain =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kernlab)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(spam)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>noTreino <span class="ot">=</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">p =</span> <span class="fl">0.75</span>, <span class="at">list =</span> F)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">=</span> spam[noTreino,]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">=</span> spam[<span class="sc">-</span>noTreino,]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Para fazer a reamostragem por k-fold vamos utilizar o comando createFolds():</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">=</span> <span class="fu">createFolds</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">k =</span> <span class="dv">10</span>, <span class="at">list =</span> T, <span class="at">returnTrain =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Os principais argumentos da função createFolds() são:</p>
 <ul>
@@ -354,43 +339,25 @@ Anexando pacote: 'kernlab'</code></pre>
 </ul>
 <p>Vamos verificar o tamanho de cada partição da nossa amostra treino:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(folds,length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(folds,length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Fold01 Fold02 Fold03 Fold04 Fold05 Fold06 Fold07 Fold08 Fold09 Fold10 
-  4142   4141   4140   4140   4141   4141   4141   4141   4140   4142 </code></pre>
+  4141   4142   4142   4140   4140   4140   4141   4141   4141   4141 </code></pre>
 </div>
 </div>
 <p>Agora vamos fazer o mesmo para a amostra teste:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">=</span> <span class="fu">createFolds</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">k =</span> <span class="dv">10</span>, <span class="at">list =</span> T, <span class="at">returnTrain =</span> F)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(folds,length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">=</span> <span class="fu">createFolds</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">k =</span> <span class="dv">10</span>, <span class="at">list =</span> T, <span class="at">returnTrain =</span> F)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(folds,length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Fold01 Fold02 Fold03 Fold04 Fold05 Fold06 Fold07 Fold08 Fold09 Fold10 
-   460    461    460    460    459    460    460    460    460    461 </code></pre>
+   461    460    460    460    460    461    460    459    460    460 </code></pre>
 </div>
 </div>
 <p>Outra opção de realizar a reamostragem por k-fold é aplicá-la diretamente na função train.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>controle <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">10</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">train</span>(type <span class="sc">~</span> ., <span class="at">data =</span> spam, <span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">trControl =</span> controle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: algoritmo não convergiu</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>controle <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">10</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">train</span>(type <span class="sc">~</span> ., <span class="at">data =</span> spam, <span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">trControl =</span> controle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="repeated-k-fold" class="level3" data-number="7.1.2">
@@ -398,46 +365,8 @@ Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu</code></
 <p>O repeated k-fold se resume a repetir o método k-fold várias vezes, com o objetivo de melhorar nossa reamostragem.</p>
 <p><strong>Ex.:</strong> Vamos aplicar um método de treino 3 vezes em 10 folds.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>controle <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"repeatedcv"</span>, <span class="at">number =</span> <span class="dv">10</span>, <span class="at">repeats =</span> <span class="dv">3</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">train</span>(type <span class="sc">~</span> ., <span class="at">data =</span> spam, <span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">trControl =</span> controle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: algoritmo não convergiu</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>controle <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"repeatedcv"</span>, <span class="at">number =</span> <span class="dv">10</span>, <span class="at">repeats =</span> <span class="dv">3</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> caret<span class="sc">::</span><span class="fu">train</span>(type <span class="sc">~</span> ., <span class="at">data =</span> spam, <span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">trControl =</span> controle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bootstrap" class="level3" data-number="7.1.3">
@@ -445,33 +374,12 @@ Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu</code></
 <p>O bootstrap é uma técnica de reamostragem com o propósito de reduzir desvios e realizar amostragem dos dados de treino com repetições. Já vimos anteriormente que este é o método default do comando train(), onde é feito 25 reamostragens por bootstrap.</p>
 <p>Embora esse seja o padrão podemos alterar através do comando trainControl(). Por exemplo, vamos alterar o número de reamostragens de 25 para 10.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>controle <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"boot"</span>, <span class="at">number =</span> <span class="dv">10</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> <span class="fu">train</span>(type <span class="sc">~</span> ., <span class="at">data =</span> spam, <span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">trControl =</span> controle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: algoritmo não convergiu</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: algoritmo não convergiu</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu
-Warning: glm.fit: probabilidades ajustadas numericamente 0 ou 1 ocorreu</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>controle <span class="ot">=</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"boot"</span>, <span class="at">number =</span> <span class="dv">10</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">=</span> <span class="fu">train</span>(type <span class="sc">~</span> ., <span class="at">data =</span> spam, <span class="at">method =</span> <span class="st">"glm"</span>, <span class="at">trControl =</span> controle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Podemos também realizarmos bootstrap fora da função train(), utilizando o comando createResample().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">=</span> <span class="fu">createResample</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">times =</span> <span class="dv">10</span>, <span class="at">list =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">=</span> <span class="fu">createResample</span>(<span class="at">y =</span> spam<span class="sc">$</span>type, <span class="at">times =</span> <span class="dv">10</span>, <span class="at">list =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -615,7 +523,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
+  const darkModeDefault = true;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
@@ -1059,11 +967,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Criação: Maqueise Pinheiro e Thaís Machado. <br> Orientação: Douglas Rodrigues (UFF) e Karina Yaginuma (UFF). <br> Colaboradores: Gabriel Miranda, Thiago Augusto, Luana Moreno e Guilherme Ceacero.</p>
+<p>Orientação: Douglas Rodrigues (UFF) e Karina Yaginuma (UFF). <br> Equipe atual: Gabriel Caetano, Guilherme Ceacero, Claudionor Ferreira e Fenício Porto.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CienciaDeDadosUFF/R.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

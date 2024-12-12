@@ -73,11 +73,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,9 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 
 <script src="site_libs/viz-1.8.2/viz.js"></script>
 
@@ -3169,7 +3167,7 @@ Prediction    0    1
 <span id="cb176-3"><a href="#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizando a segunda árvore construída:</span></span>
 <span id="cb176-4"><a href="#cb176-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xgb.plot.tree</span>(<span class="at">model =</span> modelo, <span class="at">trees =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-11b3a28f1a6bf786f600" style="width:100%;height:464px;"></div>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-11b3a28f1a6bf786f600" style="width:100%;height:464px;"></div>
 <script type="application/json" data-for="htmlwidget-11b3a28f1a6bf786f600">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"LR\"]\n\nnode [color = \"DimGray\",\n      style = \"filled\",\n      fontname = \"Helvetica\"]\n\nedge [color = \"DimGray\",\n     arrowsize = \"1.5\",\n     arrowhead = \"vee\",\n     fontname = \"Helvetica\"]\n\n  \"1\" [label = \"Tree 2\nNever.married Married-civ-spouse\nCover: 5385.37695\nGain: 1306.82288\", fillcolor = \"Beige\", shape = \"rectangle\", fontcolor = \"black\"] \n  \"2\" [label = \"X13\nCover: 2675.50879\nGain: 151.504639\", fillcolor = \"Beige\", shape = \"rectangle\", fontcolor = \"black\"] \n  \"3\" [label = \"X13\nCover: 2709.86816\nGain: 483.430145\", fillcolor = \"Beige\", shape = \"rectangle\", fontcolor = \"black\"] \n  \"4\" [label = \"X39\nCover: 2075.73779\nGain: 20.545166\", fillcolor = \"Beige\", shape = \"rectangle\", fontcolor = \"black\"] \n  \"5\" [label = \"X40\nCover: 599.770874\nGain: 89.4872589\", fillcolor = \"Beige\", shape = \"rectangle\", fontcolor = \"black\"] \n  \"6\" [label = \"Adm.clerical Exec-managerial\nCover: 1900.92212\nGain: 138.218872\", fillcolor = \"Beige\", shape = \"rectangle\", fontcolor = \"black\"] \n  \"7\" [label = \"X40\nCover: 808.946045\nGain: 51.0574951\", fillcolor = \"Beige\", shape = \"rectangle\", fontcolor = \"black\"] \n  \"8\" [label = \"Leaf\nCover: 1156.00098\nValue: -0.392639577\", fillcolor = \"Khaki\", shape = \"oval\", fontcolor = \"black\"] \n  \"9\" [label = \"Leaf\nCover: 919.736877\nValue: -0.330458313\", fillcolor = \"Khaki\", shape = \"oval\", fontcolor = \"black\"] \n  \"10\" [label = \"Leaf\nCover: 389.132843\nValue: -0.278612733\", fillcolor = \"Khaki\", shape = \"oval\", fontcolor = \"black\"] \n  \"11\" [label = \"Leaf\nCover: 210.638062\nValue: -0.0357727222\", fillcolor = \"Khaki\", shape = \"oval\", fontcolor = \"black\"] \n  \"12\" [label = \"Leaf\nCover: 1689.30823\nValue: -0.142572567\", fillcolor = \"Khaki\", shape = \"oval\", fontcolor = \"black\"] \n  \"13\" [label = \"Leaf\nCover: 211.613892\nValue: 0.114208564\", fillcolor = \"Khaki\", shape = \"oval\", fontcolor = \"black\"] \n  \"14\" [label = \"Leaf\nCover: 412.193054\nValue: 0.0885483027\", fillcolor = \"Khaki\", shape = \"oval\", fontcolor = \"black\"] \n  \"15\" [label = \"Leaf\nCover: 396.753021\nValue: 0.239560291\", fillcolor = \"Khaki\", shape = \"oval\", fontcolor = \"black\"] \n\"1\"->\"2\" [label = \"< 0.5\", style = \"bold\"] \n\"2\"->\"4\" [label = \"< 12.5\", style = \"bold\"] \n\"3\"->\"6\" [label = \"< 12.5\", style = \"bold\"] \n\"4\"->\"8\" [label = \"< 33.5\", style = \"bold\"] \n\"5\"->\"10\" [label = \"< 43.5\", style = \"bold\"] \n\"6\"->\"12\" [label = \"< 0.5\", style = \"bold\"] \n\"7\"->\"14\" [label = \"< 41.5\", style = \"bold\"] \n\"1\"->\"3\" [style = \"bold\", style = \"solid\"] \n\"2\"->\"5\" [style = \"solid\", style = \"solid\"] \n\"3\"->\"7\" [style = \"solid\", style = \"solid\"] \n\"4\"->\"9\" [style = \"solid\", style = \"solid\"] \n\"5\"->\"11\" [style = \"solid\", style = \"solid\"] \n\"6\"->\"13\" [style = \"solid\", style = \"solid\"] \n\"7\"->\"15\" [style = \"solid\", style = \"solid\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
@@ -3315,7 +3313,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
+  const darkModeDefault = true;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {

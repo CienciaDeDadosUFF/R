@@ -39,8 +39,8 @@ format:
   html:
     extensions: [callouts]
     theme:
-      light: flatly
       dark: darkly
+      light: flatly   
   pdf:
     documentclass: scrreprt
 

@@ -73,11 +73,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -612,36 +612,39 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">regr.bartMachine</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">regr.cforest</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">regr.ctree</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">regr.cubist</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">regr.featureless</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">regr.gbm</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">regr.h2o.deeplearning</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">regr.h2o.gbm</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">regr.h2o.glm</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">regr.h2o.randomForest</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">regr.rpart</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">regr.xgboost</td>
 </tr>
 </tbody>
@@ -662,54 +665,57 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">classif.bartMachine</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">classif.boosting</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">classif.C50</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">classif.cforest</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">classif.ctree</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">classif.featureless</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">classif.gbm</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">classif.h2o.deeplearning</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">classif.h2o.gbm</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">classif.h2o.glm</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">classif.h2o.randomForest</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">classif.J48</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">classif.JRip</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">classif.naiveBayes</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">classif.OneR</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">classif.PART</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">classif.rpart</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">classif.xgboost</td>
 </tr>
 </tbody>
@@ -1534,7 +1540,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
+  const darkModeDefault = true;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
