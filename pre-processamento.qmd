@@ -366,7 +366,9 @@ Dummies = predict(dummies, newdata = Wage)
 head(Dummies)
 ```
 
-Note que ele transforma cada categoria numa variável dummy. Ou seja, como temos 2 categorias para jobclass, cada uma delas vira uma variável dummy. Então se para um indivíduo temos um "1" na categoria "jobclass=industrial", isso implica que terá um "0" na categoria "jobclass=information", pois ou o indivíduo tem um tipo de trabalho, ou tem outro. O mesmo vale para as categorias de plano de saúde.
+Note que ele transforma cada categoria numa variável dummy. Ou seja, como temos 2 categorias para jobclass, cada uma delas vira uma variável dummy, cujos nomes são "jobclass.1 Industrial" e "jobclass.2 Information". Então se para um indivíduo temos um "1" na categoria "jobclass=industrial", isso implica que terá um "0" na categoria "jobclass=information", pois ou o indivíduo tem um tipo de trabalho, ou tem outro. O mesmo vale para as categorias de plano de saúde.
+
+Vale frisar que se separamos nossa base de dados em Treino e Teste, usar essa técnica de dummyVars vai criar as dummies considerando somente as classes que estão presentes na base de treino. Se na base de teste existirem outras classes possíveis que não estão presentes na base de treino, essas classes precisam ser especificadas na variável da base de treino com a função "factor". Assim, o algoritmo vai saber que essa classe também precisa de uma variável dummy.
 
 Observe também que esse novo modelo criado é uma matriz:
 
