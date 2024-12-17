@@ -14,7 +14,7 @@ str(faithful)
 
 Note que a base apresenta apenas duas variáveis: `eruptions`, que contém uma amostra corresponde ao tempo em minutos que o gêiser *Old Faithful* permanece em erupção e `waiting`, que contém uma amostra correspondente ao tempo em minutos até a próxima erupção. Vamos tentar prever a variável `waiting` através da variável `eruptions`. Note ainda que a variável de interesse é quantitativa contínua, portanto queremos construir um **regressor**.
 
-Vamos treinar nosso modelo utilizando 3 métodos separadamente: *linear model*, *Projection Pursuit Regression* e *k-Nearest Neighbor*. Para fazer a comparação, vamos colocar a mesma semente antes de cada treino para que todos sejam feitos da mesma forma e assim torne a comparação mais "justa". Note também que estamos usando toda a base de dados pra treinar o medelo. Isso porque estamos apenas avaliando o melhor modelo.
+Vamos treinar nosso modelo utilizando 3 métodos separadamente: *Linear Model*, *Projection Pursuit Regression* e *k-Nearest Neighbor*. Para fazer a comparação, vamos colocar a mesma semente antes de cada treino para que todos sejam feitos da mesma forma e assim torne a comparação mais "justa". Note também que estamos usando toda a base de dados pra treinar o medelo. Isso porque estamos apenas avaliando o melhor modelo.
 
 ```{r}
 library(caret)

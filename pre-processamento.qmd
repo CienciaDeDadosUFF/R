@@ -180,7 +180,7 @@ treino = treino %>% mutate(capAve = capitalAve)
 treino$capAve[NAs] = NA 
 ```
 
-Agora podemos aplicar o método KNN para imputar valores aos NA's, escolhendo essa opção por meio do argumento "method" da função preProcess(). O padrão da função é utilizar k=5.
+Então, recapitulando: criamos manualmente uma base de dados que possui valores faltantes. Agora podemos aplicar o método KNN para imputar valores aos NA's, escolhendo essa opção por meio do argumento "method" da função preProcess(). Na vida real, obviamente, não vamos criar dados faltantes, mas é possível que nossas bases tenham esses NA's e vamos ter que preenchê-los de alguma forma. O padrão da função é utilizar k=5 (número de vizinhos mais próximos igual a cinco).
 
 ```{r}
 imput = preProcess(treino, method = "knnImpute")
