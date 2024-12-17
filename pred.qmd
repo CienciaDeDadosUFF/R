@@ -83,6 +83,9 @@ Já na amostra teste acertamos 48+27=75% das vezes. O erro na amostra teste é o
 O "melhor" método de aprendizado de máquina é caracterizado por:
 
 -   Uma boa base de dados;
+  - Uma base de dados com dados suficientes para que o modelo possa explicar a realidade além daqueles dados
+  - Uma base de dados que seja equilibrada em variáveis resposta
+  - Uma base de dados que não tenha ou que tenha poucos dados faltantes
 
 -   Reter informações relevantes;
 
@@ -100,6 +103,6 @@ Os erros mais comuns, que se deve tomar um certo cuidado, são:
 
 -   Tentar automatizar a seleção de variáveis (características) de uma maneira que não permita que você entenda como essas variáveis estão sendo aplicadas para fazer previsões;
 
--   Não prestar atenção a peculiaridades específicas de alguns dados, como comportamentos estranhos de variáveis específicas;
+-   Não prestar atenção a peculiaridades específicas de alguns dados, como comportamentos estranhos de variáveis específicas (algo que pode ocorrer no formato de **outliers**, ou variação quase-nula fraccionada, quando a variabilidade é normal até certo ponto da variável resposta, e aí a variabilidade é completamente nula, dentre outras infinitudes de possíveis comportamentos estranhos que dependem do nosso senso crítico);
 
--   Jogar fora informações desnecessariamente.
+-   Jogar fora informações desnecessariamente. Isso pode ocorrer quando realizamos seleções de variáveis de maneira restrita demais, ou quando nossa análise de outliers jogou fora outliers que na verdade eram importantes pra explicação da variável resposta, dentre (novamente) diversas outras formas de manipulação de dados que diminuem a eficiência do nosso modelo preditor por estar descartando informações valiosas.

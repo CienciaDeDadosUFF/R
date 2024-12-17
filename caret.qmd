@@ -8,7 +8,7 @@ Vamos utilizar a base de dados spam novamente para realizarmos o procedimento de
 
 Para fazer a separação da amostra em treino e teste, vamos particionar a base de dados com a função createDataPartition(). Em problemas de classificação, a função createDataPartition() garante que a mesma proporção de cada classe observada no banco de dados seja mantida nas amostras de treino e teste. Ou seja, se o banco de dados tiver 70% de elementos do tipo A e 30% do tipo B, as amostras treino e teste terão cada uma 70% de elementos do tipo A e 30% do tipo B.
 
-Para problemas de regressão, createDataPartition() cria uma partição estratificada com base na variável dependente contínua, dividindo os dados de forma a representar bem a distribuição dos valores da variável de resposta em ambas as amostras de treino e teste.   
+Para problemas de regressão, createDataPartition() cria uma partição estratificada com base na variável dependente contínua, dividindo os dados de forma a representar bem a distribuição dos valores da variável de resposta em ambas as amostras de treino e teste.
 
 ```{r}
 library(caret)
@@ -54,14 +54,14 @@ modelo = train(type ~ ., data = treino, method = "glm")
 
 No primeiro argumento colocamos qual variável estamos tentando prever em função de qual(is). No nosso caso, queremos prever "type" em função ("\~") de todas as outras, por isso utilizamos o ponto ".". Em seguida dizemos de qual base de dados queremos construir o modelo e por último o método de treinamento utilizado.
 
-:::{.callout-tip}
+::: callout-tip
 Caso deseje utilizar apenas algumas das variáveis explicativas, basta detalhar quais variáveis devem ser consideradas no modelo, como o exemplo abaixo:
+
 ```{r}
 modelo2 = train(type ~ your+money+capitalAve, data = treino, method = "glm")
 
 ```
 :::
-
 
 Agora vamos dar uma olhada como ficou nosso modelo.
 

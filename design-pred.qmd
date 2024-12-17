@@ -4,7 +4,7 @@
 
 Por hora iremos utilizar uma taxa de erro genérica, mas em um próximo iremos falar sobre quais são as diferentes taxas de erro possíveis que você pode escolher.
 
-Por exemplo, podemos calcular o chamado **erro majoritário** que é o limite máximo abaixo do qual o erro de um **classificador** deve estar. Ele é dado por 1−p, onde p é a proporção da categoria mais requente na variável de interesse. Por exemplo, se a variável de interesse possui 2 categorias: A e B. Se 85% dos dados estão rotulados na categoria A e 15% na categoria B, entao temos que a categoria A é a **classe majoritária** e 100%−85%=15% é o erro majoritário.
+Por exemplo, podemos calcular o chamado **erro majoritário** que é o limite máximo abaixo do qual o erro de um **classificador** deve estar. Ele é dado por 1−p, onde p é a proporção da categoria mais recorrente na variável de interesse. Por exemplo, se a variável de interesse possui 2 categorias: A e B. Se 85% dos dados estão rotulados na categoria A e 15% na categoria B, entao temos que a categoria A é a **classe majoritária** e 100%−85%=15% é o erro majoritário.
 
 Caso o erro do preditor seja superior ao erro majoritário, seria melhor classificar toda nova amostra na classe majoritária, certo? **Depende.**
 
