@@ -455,9 +455,11 @@ head(Nova_incendio)
 
 ## Análise de Componentes Principais (*PCA*)
 
-Muitas vezes podemos ter variáveis em excesso no nosso banco de dados, o que torna difícil a manipulação das mesmas. A ideia geral do PCA (Principal Components Analysis) é reduzir a quantidade de variáveis, obtendo combinações interpretáveis delas. O PCA faz isso tranformando um conjunto de observações de variáveis possivelmente correlacionadas num conjunto de valores de variáveis linearmente não correlacionadas, chamadas de componentes principais. O número de componentes principais é sempre menor ou igual ao número de variáveis originais, e eles são selecionados de forma que expliquem uma alta porcentagem da variância do modelo.
+Muitas vezes podemos ter variáveis em excesso no nosso banco de dados, o que torna difícil a manipulação das mesmas. A ideia geral do PCA (Principal Components Analysis) é reduzir a quantidade de variáveis, obtendo **combinações interpretáveis** delas. O PCA faz isso tranformando um conjunto de observações de variáveis possivelmente correlacionadas num conjunto de valores de variáveis linearmente não correlacionadas, chamadas de componentes principais. Isso é feito utilizando os **autovalores** e **autovetores** da matriz de covariâncias da base de dados. O número de componentes principais é, inicialmente, sempre igual ao número de variáveis originais - mas, por conta de suas propriedades matemáticas, é possível selecionar uma quantidade de Componentes Principais muito menor do que a quantidade de variáveis originais da base de dados, enquanto se mantém a mesma (ou muito próximo da mesma) variabilidade original do conjunto de dados.
 
-Para utilizarmos o PCA no nosso modelo, basta colocar o argumento [preProcess="pca"]{.red-text} na função train(). Por padrão, são selecionadas componentes que expliquem 95% da variância.
+Efetivamente, se reduz drasticamente a complexidade da base de dados, enquanto se mantém a variabilidade original (não se perde informação).
+
+Para utilizarmos o PCA no nosso modelo, basta colocar o argumento [preProcess="pca"]{.red-text} na função train(). Por padrão, são selecionadas componentes que expliquem 95% da variabilidade do conjunto de dados.
 
 Vamos aplicar o método "glm", com a opção "pca", no banco de dados spam.
 
