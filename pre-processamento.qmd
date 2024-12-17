@@ -549,6 +549,9 @@ confusionMatrix(testePCA$type, testeMod)
 
 ## Normalização dos Dados
 
+Normalização de dados consiste em reescalar as variáveis (por exemplo, para um intervalo entre [0, 1] ou padronizando com média zero e desvio padrão unitário). Essa técnica pode reduzir o custo computacional e a complexidade do modelo. Fazer isso traz uma série de propriedades vantajosas quando estamos usando modelos estatísticos, e também para modelos de Aprendizado de Máquinas. Essas propriedades vantajosas se resumem em reduzir custo computacional (pois os números ficam pequenos), reduzir a complexidade dos modelos (pois a simetria conquistada na normalização requer menos parâmetros ou parâmetros menos profundos).
+
+
 ### Transformação de Box-Cox
 
 A transformação de Box-Cox é uma transformação feita nos dados (contínuos) para tentar normalizá-los. Considerando $X_1, X_2, ..., X_n$ as variáveis do conjunto de dados original, essa transformação consiste em encontrar um $\lambda$ tal que as variáveis transformadas $Y_1, Y_2, ..., Y_n$ se aproximem de uma distribuição normal com variância constante.
@@ -558,6 +561,8 @@ Essa transformação é dada pela seguinte forma: $Y_i = \frac{X_i^\lambda-1}{\l
 O método de Box-Cox é o método mais simples e o mais eficiente computacionalmente. Podemos aplicar a transformação de Box-Cox nos dados através da função preProcess().
 
 **Obs:** a transformação de Box-Cox só pode ser utilizada com dados positivos.
+
+A transformação de Box-Cox é, por exemplo, muito utilizado no contexto de modelos de Séries Temporais quando a escala da variável resposta é muito grande (muito grande aqui seria já na escala de milhares). A aplicação da transformação é conhecida na literatura por melhorar muito os modelos de Análise de Séries Temporais.
 
 ```{r}
 treinoBC = preProcess(treino, method = "BoxCox") 
