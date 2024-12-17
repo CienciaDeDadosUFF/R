@@ -43,7 +43,7 @@ Após feita a separação das amostras treino e teste, podemos realizar o treina
 names(getModelInfo())
 ```
 
-Para o nosso exemplo, vamos utilizar regressão logística, que possui no caret a alcunha "glm" (*generalized linear model*).
+Para o nosso exemplo, vamos utilizar regressão logística, que possui no caret a alcunha "glm" (*Generalized Linear Model*). É um modelo clássico da Estatística, mas que é conhecido por sua grande eficiência para tarefas de classificação, mesmo quando comparado a outros algoritmos exclusivos do ramo de Aprendizado de Máquinas. Dito isso, é também um modelo de classificação, então o seu uso aqui será para exemplificar como se faz para avaliar a qualidade através da Matriz de Confusão.
 
 Agora vamos criar o nosso modelo, utilizando apenas a amostra **treino**. Para isso vamos usar o comando train().
 
