@@ -10,7 +10,7 @@ Caso o erro do preditor seja superior ao erro majoritário, seria melhor classif
 
 Digamos que um psicólogo quer construir um classificador para prever se uma pessoa tem ou não ideação suicida, ou seja, pensa ou planeja suicídio. Suponha que ele tem uma base de dados com 1000 observações cuja variável de interesse "Tem ideação suicida?" está rotulada com "sim" ou "não" e 97% das observações, no caso indivíduos/pacientes, não possuem tal característica e portanto 3% dos indivíduos possuem. Criado o preditor, observamos que o erro é de 5%, assim como mostrado a seguir:
 
-![](https://cienciadedadosuff.github.io/assets/r/courses/machine_learning/01/images/erroMajo.jpeg){width="26.9cm"}
+![](images/erroMajo.jpeg){fig-align="center"}
 
 As partes em vermelho mostram o erro cometido por ambos os métodos. Agora note as pessoas que possuem ideação suicída porém foram classficadas como não possuidoras dessa característica. Quanto isso afetará no dignóstico do psicólogo?
 

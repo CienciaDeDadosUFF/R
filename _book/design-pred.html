@@ -39,11 +39,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">APRENDIZADO DE MÁQUINA COM R</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CienciaDeDadosUFF/R.github.io" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="./APRENDIZADO-DE-MÁQUINA-COM-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
@@ -252,10 +252,14 @@ ul.task-list li input[type="checkbox"] {
 
 <p><strong>1. Defina sua taxa de erro (<em>benchmark</em>).</strong></p>
 <p>Por hora iremos utilizar uma taxa de erro genérica, mas em um próximo iremos falar sobre quais são as diferentes taxas de erro possíveis que você pode escolher.</p>
-<p>Por exemplo, podemos calcular o chamado <strong>erro majoritário</strong> que é o limite máximo abaixo do qual o erro de um <strong>classificador</strong> deve estar. Ele é dado por 1−p, onde p é a proporção da categoria mais requente na variável de interesse. Por exemplo, se a variável de interesse possui 2 categorias: A e B. Se 85% dos dados estão rotulados na categoria A e 15% na categoria B, entao temos que a categoria A é a <strong>classe majoritária</strong> e 100%−85%=15% é o erro majoritário.</p>
+<p>Por exemplo, podemos calcular o chamado <strong>erro majoritário</strong> que é o limite máximo abaixo do qual o erro de um <strong>classificador</strong> deve estar. Ele é dado por 1−p, onde p é a proporção da categoria mais recorrente na variável de interesse. Por exemplo, se a variável de interesse possui 2 categorias: A e B. Se 85% dos dados estão rotulados na categoria A e 15% na categoria B, entao temos que a categoria A é a <strong>classe majoritária</strong> e 100%−85%=15% é o erro majoritário.</p>
 <p>Caso o erro do preditor seja superior ao erro majoritário, seria melhor classificar toda nova amostra na classe majoritária, certo? <strong>Depende.</strong></p>
 <p>Digamos que um psicólogo quer construir um classificador para prever se uma pessoa tem ou não ideação suicida, ou seja, pensa ou planeja suicídio. Suponha que ele tem uma base de dados com 1000 observações cuja variável de interesse “Tem ideação suicida?” está rotulada com “sim” ou “não” e 97% das observações, no caso indivíduos/pacientes, não possuem tal característica e portanto 3% dos indivíduos possuem. Criado o preditor, observamos que o erro é de 5%, assim como mostrado a seguir:</p>
-<p><img src="https://cienciadedadosuff.github.io/assets/r/courses/machine_learning/01/images/erroMajo.jpeg" class="img-fluid" style="width:26.9cm"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/erroMajo.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 <p>As partes em vermelho mostram o erro cometido por ambos os métodos. Agora note as pessoas que possuem ideação suicída porém foram classficadas como não possuidoras dessa característica. Quanto isso afetará no dignóstico do psicólogo?</p>
 <p><strong>2. Divida os dados em Treino e Teste, ou Treino, Teste e Validação (opcional).</strong></p>
 <p>Como já comentado, o conjunto de treino deve ser criado para construir seu modelo e o conjunto de testes para avaliar seu modelo. Fazemos isso com o intuito de criarmos um modelo que se ajuste bem a qualquer base de dados, e não apenas à nossa. É comum usar 70% da amostra como treino e 30% como teste, mas isso não é uma regra. Podemos também repartir os dados em treino, teste e validação(*). É importante ficar claro que quem está conduzindo as análises é quem fica encarregado de decidir o que fica melhor para cada amostra.</p>
@@ -408,7 +412,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
+  const darkModeDefault = true;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
@@ -852,11 +856,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Criação: Maqueise Pinheiro e Thaís Machado. <br> Orientação: Douglas Rodrigues (UFF) e Karina Yaginuma (UFF). <br> Colaboradores: Gabriel Miranda, Thiago Augusto, Luana Moreno e Guilherme Ceacero.</p>
+<p>Orientação: Douglas Rodrigues (UFF) e Karina Yaginuma (UFF). <br> Equipe atual: Gabriel Caetano, Guilherme Ceacero, Claudionor Ferreira e Fenício Porto.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/CienciaDeDadosUFF/cienciadedadosuff2.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/CienciaDeDadosUFF/R.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
