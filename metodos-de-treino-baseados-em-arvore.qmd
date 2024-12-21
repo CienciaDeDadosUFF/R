@@ -1,3 +1,4 @@
+```{=html}
 <style>
 .red-text {
   color: red;
@@ -6,6 +7,7 @@
   color: blue;
 }
 </style>
+```
 
 # Métodos de Treino Baseados em Árvore
 
@@ -1670,20 +1672,14 @@ Assim, temos as predições da nossa árvore:
 
 Dessa forma podemos obter novos resíduos utilizando a nova árvore.:
 
-
-
 ```{r}
 college$Residuos2 = college$Probabilidade-c(0.5,0.35,0.5,0.65)
 college
 ```
 
-
-
 Observe que os novos resíduos são menores (ou iguais) do que os anteriores, o que significa que estamos indo na direção correta. O próximo passo agora é construir uma nova árvore para os novos resíduos. Note que agora as probabilidades preditas são diferentes (antes era de 0,5 para todos os elementos), o que tornará os cálculos do Índice de Similaridade e dos Valores de Saída mais interessantes, por exemplo. Com a nova árvore construída fazemos novas predições que nos darão resíduos menores ainda. Então construímos uma nova árvore baseada nos novos resíduos e repetimos o processo. Fazemos isso até que os resíduos se tornem super pequenos ou se atingirmos o número máximo de árvores escolhido.
 
-
 Vamos novamente utilizar o pacote xgboost para construirmos um preditor. Dessa vez iremos construir um classificador e para isso usaremos a base de dados Adult, que se encontra presente no seguinte site: https://archive.ics.uci.edu/ml/index.php. Esse site é um repositório de bases de dados reais, o que torna ele interessante para quem está estudando/trabalhando com aprendizado de máquina.
-
 
 ```{r}
 # Lendo a base de dados como um tibble:
@@ -1692,33 +1688,24 @@ renda =
 str(renda)
 ```
 
-
 Essa base possui algumas informações sobre 32.560 indivíduos, tais como: estado civil, raça, sexo, país de origem, entre outras, e a variável de interesse “X..50K”, que indica se o indivíduo tem uma renda maior ou menor/igual do que 50.000 U.M. (unidades monetárias) por ano. Mas antes de começarmos a construção do preditor repare que a base de dados possui variáveis com variância quase-zero.
-
-
 
 ```{r}
 library(caret)
 nearZeroVar(renda, saveMetrics = T)
 ```
 
-
 Podemos ver que as variáveis “X2174”, “X0” e “United.States” são as que possuem variância quase-zero, o que significa que elas não trarão muita informação ao modelo, pois possuem os mesmos valores ou mesmas classificações para muitos indivíduos.
-
 
 ```{r}
 hist(renda$X2174, main = "Histograma da variável X2174", xlab = "Variável X2174", 
      ylab = "Frequência", col = "blue")
 ```
 
-
-
 ```{r}
 hist(renda$X0, main = "Histograma da variável X0", xlab = "Variável X0", 
      ylab = "Frequência", col = "lightblue")
 ```
-
-
 
 ```{r}
 # Tabela com as observações da variável "United.States":
@@ -1726,11 +1713,7 @@ hist(renda$X0, main = "Histograma da variável X0", xlab = "Variável X0",
 table(renda$United.States)
 ```
 
-
-
 Dessa forma, vamos remover essas variáveis do banco de dados.
-
-
 
 ```{r}
 # Vetor com todas as variáveis com variância quase-zero:
@@ -1740,11 +1723,7 @@ nzv = nearZeroVar(renda)
 renda = renda[, -nzv]
 ```
 
-
-
 Agora precisamos nos atentar a um fator importante da função xgboost: ela só aceita bases de dados com **variáveis numéricas**. Isso é um problema para a nossa base pois ela possui variáveis do tipo factor. O que fazer nesse caso? A resposta para essa pergunta é simples: vamos transformar essas variáveis em variáveis dummies.
-
-
 
 ```{r}
 # Criando as variáveis dummies:
@@ -1763,11 +1742,7 @@ renda = dplyr::select(renda, -c(X..50K, State.gov, Bachelors, Never.married,
 head(renda)
 ```
 
-
-
 Note que agora todas as nossas variáveis são numéricas e, portanto, a base está pronta para construirmos o preditor. Como sempre, vamos começar dividindo-a em amostra treino e amostra teste.
-
-
 
 ```{r}
 set.seed(11)
@@ -1783,9 +1758,7 @@ teste = renda[-noTreino, -5]
 teste_label = renda[-noTreino, 5]
 ```
 
-
 Agora vamos usar a função xgboost() para criar o modelo.
-
 
 ```{r}
 library(xgboost)
@@ -1798,14 +1771,10 @@ predicao = predict(modelo, teste)
 head(predicao)
 ```
 
-
-
 O modelo retorna probabilidades, então devemos criar um classificador. Vamos criar um bem simples, da seguinte forma:
 
-- Probabilidade acima de 0,5: consideramos que a renda do indivíduo é maior do que 50.000;
-- Probabilidade abaixo de 0,5: consideramos que a renda do indivíduo é menor ou igual a 50.000.
-
-
+-   Probabilidade acima de 0,5: consideramos que a renda do indivíduo é maior do que 50.000;
+-   Probabilidade abaixo de 0,5: consideramos que a renda do indivíduo é menor ou igual a 50.000.
 
 ```{r}
 classificador = as.numeric(predicao>=0.5)
@@ -1815,11 +1784,7 @@ classificador = as.numeric(predicao>=0.5)
 confusionMatrix(data = as.factor(classificador), reference = as.factor(teste_label), positive = "1")
 ```
 
-
-
 Podemos usar o pacote DiagrammeR para visualizarmos as árvores construídas pelo modelo. Para isso basta utilizarmos a função xgb.plot.tree() e no argumento trees escolhermos a(s) árvore(s) desejada(s).
-
-
 
 ```{r}
 library(DiagrammeR)
@@ -1827,8 +1792,3 @@ library(DiagrammeR)
 # Visualizando a segunda árvore construída:
 xgb.plot.tree(model = modelo, trees = 2)
 ```
-
-
-
-
-
